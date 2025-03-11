@@ -1,0 +1,8 @@
+**/.env
+
+# Virtual env
+interviewPrep/
+venv/
+env/
+.venv/
+.env/

@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=backend.py
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://myuser:mypassword@database:5432/interview_prep
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - database
+  
+  frontend:
+    build: ./frontend-interview-prep
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend-interview-prep:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  database:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: interview_prep
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
