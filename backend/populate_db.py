@@ -4,7 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Database connection URL from environment variable
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://myuser:mypassword@localhost/interview_prep")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://myuser:mypassword@database:5432/interview_prep")
 
 # Define the table name
 TABLE_NAME = "question"
