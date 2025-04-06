@@ -35,6 +35,7 @@ def analyze_question(user_question):
     if company_name not in company_set:
         company_name = None
     
+    logger.info(f'company_name = {company_name}')
     data = get_data(company_name)
 
     questions = data['question'].astype(str).tolist()

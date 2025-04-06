@@ -20,6 +20,7 @@ def get_data(company_name):
 
         # Convert the list of dictionaries to a pandas DataFrame
         df = pd.DataFrame(rows)
+        logger.info(df.head())
         logger.info(f"DataFrame created with {len(df)} rows")
 
     else:
