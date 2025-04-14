@@ -8,11 +8,15 @@ import './App.css';
 function App() {
   const [question, setQuestion] = useState("");
   const [responseData, setResponseData] = useState([]);
+  const useProduction = true; // Toggle to true when needed
+  const API_URL = useProduction 
+    ? 'https://your-ec2-instance.amazonaws.com/api'
+    : 'http://localhost:3000/api';
 
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://127.0.0.1:5000/api/analyze",
+        API_URL,
         { question },
         { withCredentials: false }
       );

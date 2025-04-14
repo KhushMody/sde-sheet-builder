@@ -1,5 +1,6 @@
 **/.env
 **/__pycache__
+**/*.pem
 
 # Virtual env
 interviewPrep/
@@ -7,6 +8,7 @@ venv/
 env/
 .venv/
 .env/
+backend/backend_ssb
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
