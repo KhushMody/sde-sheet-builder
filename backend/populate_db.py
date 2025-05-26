@@ -15,7 +15,13 @@ BASE_URL = "https://raw.githubusercontent.com/krishnadey30/LeetCode-Questions-Co
 # Fetch the list of available CSV files from the repository
 def fetch_csv_file_list():
     repo_api_url = "https://api.github.com/repos/krishnadey30/LeetCode-Questions-CompanyWise/contents"
-    response = requests.get(repo_api_url)
+    GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+    if GITHUB_TOKEN:
+        headers = {"Authorization": f"token {GITHUB_TOKEN}"}
+    else:
+        headers = {}
+        print("⚠️ Warning: GITHUB_TOKEN not found. You're using unauthenticated GitHub access (limit: 60 req/hour).")
+    response = requests.get(repo_api_url, headers=headers)
     if response.status_code == 200:
         files = response.json()
         csv_files = [file['name'] for file in files if file['name'].endswith('.csv')]
