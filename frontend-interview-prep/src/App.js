@@ -8,10 +8,10 @@ import './App.css';
 function App() {
   const [question, setQuestion] = useState("");
   const [responseData, setResponseData] = useState([]);
-  const useProduction = true; // Toggle to true when needed
+  const useProduction = false; // Toggle to true when needed
   const API_URL = useProduction 
-    ? 'https://your-ec2-instance.amazonaws.com/api'
-    : 'http://localhost:3000/api';
+    ? 'https://your-ec2-instance.amazonaws.com/api/analyze'
+    : 'http://localhost:5000/api/analyze';
 
   const handleSubmit = async () => {
     try {
