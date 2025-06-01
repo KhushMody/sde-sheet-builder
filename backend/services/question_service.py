@@ -36,7 +36,7 @@ def analyze_question(user_question):
         company_name = None
     
     logger.info(f'company_name = {company_name}')
-    data = get_data(company_name)
+    data = get_data(company_name, difficulty)
 
     questions = data['question'].astype(str).tolist()
     usr_msg = f"""
@@ -61,8 +61,8 @@ def analyze_question(user_question):
     indexed_data = data.set_index('question')
     existing_questions = [q for q in selected_questions_list if q in indexed_data.index]
     result = indexed_data.loc[existing_questions]
-    result = result[result['difficulty'] == difficulty]
-    result = result.head(length)
+    # result = result[result['difficulty'] == difficulty]
+    result = result.drop_duplicates()
     logger.info(f"the needed dataframe:\n {result}")
     result = result.reset_index()  # This puts 'question' back as a column and creates a numeric index
     result_json = result.to_dict(orient='records')

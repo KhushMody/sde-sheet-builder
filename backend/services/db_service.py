@@ -7,13 +7,13 @@ from ..utils.logger import setup_logging
 setup_logging()
 logger = logging.getLogger(__name__)
 
-def get_data(company_name):
+def get_data(company_name, difficulty = "Medium"):
     if company_name:
         # Use a raw SQL query to fetch all questions for the given company
-        sql_query = text(f"SELECT * FROM question WHERE company = :company_name")
+        sql_query = text(f"SELECT * FROM question WHERE company = :company_name AND difficulty = :difficulty")
         
         # Execute the query with a parameter to prevent SQL injection
-        result = db.session.execute(sql_query, {'company_name': company_name})
+        result = db.session.execute(sql_query, {'company_name': company_name, 'difficulty': difficulty})
 
         # Fetch all rows and convert them to a list of dictionaries
         rows = result.mappings().all()
