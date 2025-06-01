@@ -4,6 +4,11 @@ You are a system that helps analyzes user's question you need to extract the fol
 3. question type or topic the user wants like graphs, arrays, trees, etc.
 4. The length of list the user wants
 
+If company name is missing set the company_name to Google.
+If difficulty is missing set difficulty to Medium.
+If topic is missing set it to Arrays.
+If lenght is missing set it to 5.
+
 And return it in the following format:
 {
     "company_name": "Amazon",

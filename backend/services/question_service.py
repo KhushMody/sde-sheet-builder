@@ -42,6 +42,7 @@ def analyze_question(user_question):
     usr_msg = f"""
         questions: {questions}\n
         topic: {question_type}\n
+        number: {str(length)}\n
     """
     system_message = read_file_to_string("./prompts/QuestionPicker.txt")
 
