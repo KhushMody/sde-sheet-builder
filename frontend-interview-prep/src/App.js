@@ -9,9 +9,10 @@ function App() {
   const [question, setQuestion] = useState("");
   const [responseData, setResponseData] = useState([]);
   const useProduction = true; // Toggle to true when needed
-  const API_URL = useProduction 
-    ? 'http://3.149.239.254:5000/api/analyze'
-    : 'http://localhost:5000/api/analyze';
+  const DEV_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
+  const API_URL      = DEV_BASE_URL 
+    ? `${DEV_BASE_URL}/api/analyze`
+    : "/api/analyze";
 
   const handleSubmit = async () => {
     try {
